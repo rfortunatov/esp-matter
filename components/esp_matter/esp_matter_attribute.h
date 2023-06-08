@@ -424,6 +424,28 @@ attribute_t *create_temperature_max_measured_value(cluster_t *cluster, nullable<
 } /* attribute */
 } /* temperature_measurement */
 
+namespace carbon_dioxide_measurement {
+namespace attribute {
+attribute_t *create_carbon_dioxide_measured_value(cluster_t *cluster, nullable<float> value);
+attribute_t *create_carbon_dioxide_min_measured_value(cluster_t *cluster, nullable<float> value);
+attribute_t *create_carbon_dioxide_max_measured_value(cluster_t *cluster, nullable<float> value);
+} /* attribute */
+} /* carbon_dioxide_measurement */
+
+namespace total_volatile_organic_compounds_measurement {
+namespace attribute {
+attribute_t *create_total_volatile_organic_compounds_measured_value(cluster_t *cluster, nullable<float> value);
+attribute_t *create_total_volatile_organic_compounds_min_measured_value(cluster_t *cluster, nullable<float> value);
+attribute_t *create_total_volatile_organic_compounds_max_measured_value(cluster_t *cluster, nullable<float> value);
+} /* attribute */
+} /* total_volatile_organic_compounds_measurement */
+
+namespace air_quality_measurement {
+namespace attribute {
+attribute_t *create_air_quality(cluster_t *cluster, uint8_t value);
+} /* attribute */
+} /* air_quality_measurement */
+
 namespace relative_humidity_measurement {
 namespace attribute {
 attribute_t *create_relative_humidity_measured_value(cluster_t *cluster, nullable<uint16_t> value);

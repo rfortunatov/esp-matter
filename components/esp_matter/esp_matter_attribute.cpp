@@ -1790,6 +1790,74 @@ attribute_t *create_temperature_max_measured_value(cluster_t *cluster, nullable<
 } /* attribute */
 } /* temperature_measurement */
 
+namespace carbon_dioxide_measurement {
+namespace attribute {
+
+attribute_t *create_carbon_dioxide_measured_value(cluster_t *cluster, nullable<float> value)
+{
+    return esp_matter::attribute::create(cluster, CarbonDioxideConcentrationMeasurement::Attributes::MeasuredValue::Id,
+                                         ATTRIBUTE_FLAG_NULLABLE, esp_matter_nullable_float(value));
+}
+
+attribute_t *create_carbon_dioxide_min_measured_value(cluster_t *cluster, nullable<float> value)
+{
+    return esp_matter::attribute::create(cluster, CarbonDioxideConcentrationMeasurement::Attributes::MinMeasuredValue::Id,
+                                         ATTRIBUTE_FLAG_NULLABLE, esp_matter_nullable_float(value));
+}
+
+attribute_t *create_carbon_dioxide_max_measured_value(cluster_t *cluster, nullable<float> value)
+{
+    return esp_matter::attribute::create(cluster, CarbonDioxideConcentrationMeasurement::Attributes::MaxMeasuredValue::Id,
+                                         ATTRIBUTE_FLAG_NULLABLE, esp_matter_nullable_float(value));
+}
+
+} /* attribute */
+} /* carbon_dioxide_measurement */
+
+namespace total_volatile_organic_compounds_measurement {
+namespace attribute {
+
+attribute_t *create_total_volatile_organic_compounds_measured_value(cluster_t *cluster, nullable<float> value)
+{
+    return esp_matter::attribute::create(cluster,
+                                         TotalVolatileOrganicCompoundsConcentrationMeasurement::Attributes::MeasuredValue::Id,
+                                         ATTRIBUTE_FLAG_NULLABLE,
+                                         esp_matter_nullable_float(value));
+}
+
+attribute_t *create_total_volatile_organic_compounds_min_measured_value(cluster_t *cluster, nullable<float> value)
+{
+    return esp_matter::attribute::create(cluster,
+                                         TotalVolatileOrganicCompoundsConcentrationMeasurement::Attributes::MinMeasuredValue::Id,
+                                         ATTRIBUTE_FLAG_NULLABLE,
+                                         esp_matter_nullable_float(value));
+}
+
+attribute_t *create_total_volatile_organic_compounds_max_measured_value(cluster_t *cluster, nullable<float> value)
+{
+    return esp_matter::attribute::create(cluster,
+                                         TotalVolatileOrganicCompoundsConcentrationMeasurement::Attributes::MaxMeasuredValue::Id,
+                                         ATTRIBUTE_FLAG_NULLABLE,
+                                         esp_matter_nullable_float(value));
+}
+
+} /* attribute */
+} /* total_volatile_organic_compounds_measurement */
+
+namespace air_quality_measurement {
+namespace attribute {
+
+attribute_t *create_air_quality(cluster_t *cluster, uint8_t value)
+{
+    return esp_matter::attribute::create(cluster,
+                                         AirQuality::Attributes::AirQuality::Id,
+                                         ATTRIBUTE_FLAG_NONE,
+                                         esp_matter_enum8(value));
+}
+
+} /* attribute */
+} /* air_quality_measurement */
+
 namespace relative_humidity_measurement {
 namespace attribute {
 

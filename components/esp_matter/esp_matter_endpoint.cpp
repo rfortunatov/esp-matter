@@ -678,6 +678,105 @@ endpoint_t *add(endpoint_t *endpoint, config_t *config)
 }
 } /* temperature_sensor */
 
+namespace carbon_dioxide_sensor {
+uint32_t get_device_type_id()
+{
+    return ESP_MATTER_CARBON_DIOXIDE_SENSOR_DEVICE_TYPE_ID;
+}
+
+uint8_t get_device_type_version()
+{
+    return ESP_MATTER_CARBON_DIOXIDE_SENSOR_DEVICE_TYPE_VERSION;
+}
+
+endpoint_t *create(node_t *node, config_t *config, uint8_t flags, void *priv_data)
+{
+    endpoint_t *endpoint = endpoint::create(node, flags, priv_data);
+    return add(endpoint, config);
+}
+
+endpoint_t *add(endpoint_t *endpoint, config_t *config)
+{
+    if (!endpoint) {
+        ESP_LOGE(TAG, "Endpoint cannot be NULL");
+        return NULL;
+    }
+    add_device_type(endpoint, get_device_type_id(), get_device_type_version());
+
+    descriptor::create(endpoint, CLUSTER_FLAG_SERVER);
+    identify::create(endpoint, &(config->identify), CLUSTER_FLAG_SERVER);
+    carbon_dioxide_measurement::create(endpoint, &(config->carbon_dioxide_measurement), CLUSTER_FLAG_SERVER);
+
+    return endpoint;
+}
+} /* carbon_dioxide_sensor */
+
+namespace total_volatile_organic_compounds_sensor {
+uint32_t get_device_type_id()
+{
+    return ESP_MATTER_TOTAL_VOLATILE_ORGANIC_COMPOUNDS_SENSOR_DEVICE_TYPE_ID;
+}
+
+uint8_t get_device_type_version()
+{
+    return ESP_MATTER_TOTAL_VOLATILE_ORGANIC_COMPOUNDS_SENSOR_DEVICE_TYPE_VERSION;
+}
+
+endpoint_t *create(node_t *node, config_t *config, uint8_t flags, void *priv_data)
+{
+    endpoint_t *endpoint = endpoint::create(node, flags, priv_data);
+    return add(endpoint, config);
+}
+
+endpoint_t *add(endpoint_t *endpoint, config_t *config)
+{
+    if (!endpoint) {
+        ESP_LOGE(TAG, "Endpoint cannot be NULL");
+        return NULL;
+    }
+    add_device_type(endpoint, get_device_type_id(), get_device_type_version());
+
+    descriptor::create(endpoint, CLUSTER_FLAG_SERVER);
+    identify::create(endpoint, &(config->identify), CLUSTER_FLAG_SERVER);
+    total_volatile_organic_compounds_measurement::create(endpoint, &(config->total_volatile_organic_compounds_measurement), CLUSTER_FLAG_SERVER);
+
+    return endpoint;
+}
+} /* total_volatile_organic_compounds_sensor */
+
+namespace air_quality_sensor {
+uint32_t get_device_type_id()
+{
+    return ESP_MATTER_AIR_QUALITY_SENSOR_DEVICE_TYPE_ID;
+}
+
+uint8_t get_device_type_version()
+{
+    return ESP_MATTER_AIR_QUALITY_SENSOR_DEVICE_TYPE_VERSION;
+}
+
+endpoint_t *create(node_t *node, config_t *config, uint8_t flags, void *priv_data)
+{
+    endpoint_t *endpoint = endpoint::create(node, flags, priv_data);
+    return add(endpoint, config);
+}
+
+endpoint_t *add(endpoint_t *endpoint, config_t *config)
+{
+    if (!endpoint) {
+        ESP_LOGE(TAG, "Endpoint cannot be NULL");
+        return NULL;
+    }
+    add_device_type(endpoint, get_device_type_id(), get_device_type_version());
+
+    descriptor::create(endpoint, CLUSTER_FLAG_SERVER);
+    identify::create(endpoint, &(config->identify), CLUSTER_FLAG_SERVER);
+    air_quality_measurement::create(endpoint, &(config->air_quality_measurement), CLUSTER_FLAG_SERVER);
+
+    return endpoint;
+}
+} /* air_quality_sensor */
+
 namespace humidity_sensor {
 uint32_t get_device_type_id()
 {

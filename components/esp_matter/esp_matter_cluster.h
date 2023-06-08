@@ -354,6 +354,40 @@ typedef struct config {
 cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags);
 } /* temperature_measurement */
 
+namespace carbon_dioxide_measurement {
+typedef struct config {
+    uint16_t cluster_revision;
+    nullable<float> measured_value;
+    nullable<float> min_measured_value;
+    nullable<float> max_measured_value;
+    config() : cluster_revision(1), measured_value(), min_measured_value(400), max_measured_value(6000) {}
+} config_t;
+
+cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags);
+} /* carbon_dioxide_measurement */
+
+namespace total_volatile_organic_compounds_measurement {
+typedef struct config {
+    uint16_t cluster_revision;
+    nullable<float> measured_value;
+    nullable<float> min_measured_value;
+    nullable<float> max_measured_value;
+    config() : cluster_revision(1), measured_value(), min_measured_value(400), max_measured_value(6000) {}
+} config_t;
+
+cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags);
+} /* total_volatile_organic_compounds_measurement */
+
+namespace air_quality_measurement {
+typedef struct config {
+    uint16_t cluster_revision;
+    uint8_t air_quality;
+    config() : cluster_revision(1), air_quality(0) {}
+} config_t;
+
+cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags);
+} /* air_quality_measurement */
+
 namespace relative_humidity_measurement {
 typedef struct config {
     uint16_t cluster_revision;

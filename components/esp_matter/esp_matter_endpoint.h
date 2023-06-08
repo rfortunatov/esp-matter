@@ -51,6 +51,12 @@
 
 #define ESP_MATTER_TEMPERATURE_SENSOR_DEVICE_TYPE_ID 0x0302
 #define ESP_MATTER_TEMPERATURE_SENSOR_DEVICE_TYPE_VERSION 2
+#define ESP_MATTER_CARBON_DIOXIDE_SENSOR_DEVICE_TYPE_ID 0x0308
+#define ESP_MATTER_CARBON_DIOXIDE_SENSOR_DEVICE_TYPE_VERSION 1
+#define ESP_MATTER_TOTAL_VOLATILE_ORGANIC_COMPOUNDS_SENSOR_DEVICE_TYPE_ID 0x0309
+#define ESP_MATTER_TOTAL_VOLATILE_ORGANIC_COMPOUNDS_SENSOR_DEVICE_TYPE_VERSION 1
+#define ESP_MATTER_AIR_QUALITY_SENSOR_DEVICE_TYPE_ID 0x0310
+#define ESP_MATTER_AIR_QUALITY_SENSOR_DEVICE_TYPE_VERSION 1
 #define ESP_MATTER_OCCUPANCY_SENSOR_DEVICE_TYPE_ID 0x0107
 #define ESP_MATTER_OCCUPANCY_SENSOR_DEVICE_TYPE_VERSION 2
 #define ESP_MATTER_CONTACT_SENSOR_DEVICE_TYPE_ID 0x0015
@@ -326,6 +332,42 @@ uint8_t get_device_type_version();
 endpoint_t *create(node_t *node, config_t *config, uint8_t flags, void *priv_data);
 endpoint_t *add(endpoint_t *endpoint, config_t *config);
 } /* temperature_sensor */
+
+namespace carbon_dioxide_sensor {
+typedef struct config {
+    cluster::identify::config_t identify;
+    cluster::carbon_dioxide_measurement::config_t carbon_dioxide_measurement;
+} config_t;
+
+uint32_t get_device_type_id();
+uint8_t get_device_type_version();
+endpoint_t *create(node_t *node, config_t *config, uint8_t flags, void *priv_data);
+endpoint_t *add(endpoint_t *endpoint, config_t *config);
+} /* carbon_dioxide_sensor */
+
+namespace total_volatile_organic_compounds_sensor {
+typedef struct config {
+    cluster::identify::config_t identify;
+    cluster::total_volatile_organic_compounds_measurement::config_t total_volatile_organic_compounds_measurement;
+} config_t;
+
+uint32_t get_device_type_id();
+uint8_t get_device_type_version();
+endpoint_t *create(node_t *node, config_t *config, uint8_t flags, void *priv_data);
+endpoint_t *add(endpoint_t *endpoint, config_t *config);
+} /* total_volatile_organic_compounds_sensor */
+
+namespace air_quality_sensor {
+typedef struct config {
+    cluster::identify::config_t identify;
+    cluster::air_quality_measurement::config_t air_quality_measurement;
+} config_t;
+
+uint32_t get_device_type_id();
+uint8_t get_device_type_version();
+endpoint_t *create(node_t *node, config_t *config, uint8_t flags, void *priv_data);
+endpoint_t *add(endpoint_t *endpoint, config_t *config);
+} /* air_quality_sensor */
 
 namespace humidity_sensor {
 typedef struct config {

@@ -847,6 +847,7 @@ void PressureMeasurementClusterAttributeListListAttributeFilter(chip::TLV::TLVRe
                                                                 chip::Callback::Cancelable * onFailureCallback);
 typedef void (*PressureMeasurementAttributeListListAttributeCallback)(
     void * context, const chip::app::DataModel::DecodableList<chip::AttributeId> & data);
+
 void PumpConfigurationAndControlClusterGeneratedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
                                                                                chip::Callback::Cancelable * onSuccessCallback,
                                                                                chip::Callback::Cancelable * onFailureCallback);
@@ -877,6 +878,55 @@ void RelativeHumidityMeasurementClusterAttributeListListAttributeFilter(chip::TL
                                                                         chip::Callback::Cancelable * onFailureCallback);
 typedef void (*RelativeHumidityMeasurementAttributeListListAttributeCallback)(
     void * context, const chip::app::DataModel::DecodableList<chip::AttributeId> & data);
+
+void AirQualityClusterGeneratedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                               chip::Callback::Cancelable * onSuccessCallback,
+                                                                               chip::Callback::Cancelable * onFailureCallback);
+typedef void (*AirQualityGeneratedCommandListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::CommandId> & data);
+void AirQualityClusterAcceptedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                              chip::Callback::Cancelable * onSuccessCallback,
+                                                                              chip::Callback::Cancelable * onFailureCallback);
+typedef void (*AirQualityAcceptedCommandListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::CommandId> & data);
+void AirQualityClusterAttributeListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                        chip::Callback::Cancelable * onSuccessCallback,
+                                                                        chip::Callback::Cancelable * onFailureCallback);
+typedef void (*AirQualityAttributeListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::AttributeId> & data);
+
+void CarbonDioxideConcentrationMeasurementClusterGeneratedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                               chip::Callback::Cancelable * onSuccessCallback,
+                                                                               chip::Callback::Cancelable * onFailureCallback);
+typedef void (*CarbonDioxideConcentrationMeasurementGeneratedCommandListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::CommandId> & data);
+void CarbonDioxideConcentrationMeasurementClusterAcceptedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                              chip::Callback::Cancelable * onSuccessCallback,
+                                                                              chip::Callback::Cancelable * onFailureCallback);
+typedef void (*CarbonDioxideConcentrationMeasurementAcceptedCommandListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::CommandId> & data);
+void CarbonDioxideConcentrationMeasurementClusterAttributeListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                        chip::Callback::Cancelable * onSuccessCallback,
+                                                                        chip::Callback::Cancelable * onFailureCallback);
+typedef void (*CarbonDioxideConcentrationMeasurementAttributeListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::AttributeId> & data);
+
+void TotalVolatileOrganicCompoundsConcentrationMeasurementClusterGeneratedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                               chip::Callback::Cancelable * onSuccessCallback,
+                                                                               chip::Callback::Cancelable * onFailureCallback);
+typedef void (*TotalVolatileOrganicCompoundsConcentrationMeasurementGeneratedCommandListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::CommandId> & data);
+void TotalVolatileOrganicCompoundsConcentrationMeasurementClusterAcceptedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                              chip::Callback::Cancelable * onSuccessCallback,
+                                                                              chip::Callback::Cancelable * onFailureCallback);
+typedef void (*TotalVolatileOrganicCompoundsConcentrationMeasurementAcceptedCommandListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::CommandId> & data);
+void TotalVolatileOrganicCompoundsConcentrationMeasurementClusterAttributeListListAttributeFilter(chip::TLV::TLVReader * data,
+                                                                        chip::Callback::Cancelable * onSuccessCallback,
+                                                                        chip::Callback::Cancelable * onFailureCallback);
+typedef void (*TotalVolatileOrganicCompoundsConcentrationMeasurementAttributeListListAttributeCallback)(
+    void * context, const chip::app::DataModel::DecodableList<chip::AttributeId> & data);
+
 void ScenesClusterGeneratedCommandListListAttributeFilter(chip::TLV::TLVReader * data,
                                                           chip::Callback::Cancelable * onSuccessCallback,
                                                           chip::Callback::Cancelable * onFailureCallback);

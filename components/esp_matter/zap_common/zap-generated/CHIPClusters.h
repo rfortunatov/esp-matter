@@ -380,6 +380,27 @@ public:
     ~RelativeHumidityMeasurementCluster() {}
 };
 
+class DLL_EXPORT CarbonDioxideConcentrationMeasurementCluster : public ClusterBase
+{
+public:
+    CarbonDioxideConcentrationMeasurementCluster(Messaging::ExchangeManager & exchangeManager, const SessionHandle & session, EndpointId endpoint) : ClusterBase(exchangeManager, session, endpoint) {}
+    ~CarbonDioxideConcentrationMeasurementCluster() {}
+};
+
+class DLL_EXPORT TotalVolatileOrganicCompoundsConcentrationMeasurementCluster : public ClusterBase
+{
+public:
+    TotalVolatileOrganicCompoundsConcentrationMeasurementCluster(Messaging::ExchangeManager & exchangeManager, const SessionHandle & session, EndpointId endpoint) : ClusterBase(exchangeManager, session, endpoint) {}
+    ~TotalVolatileOrganicCompoundsConcentrationMeasurementCluster() {}
+};
+
+class DLL_EXPORT AirQualityCluster : public ClusterBase
+{
+public:
+    AirQualityCluster(Messaging::ExchangeManager & exchangeManager, const SessionHandle & session, EndpointId endpoint) : ClusterBase(exchangeManager, session, endpoint) {}
+    ~AirQualityCluster() {}
+};
+
 class DLL_EXPORT OccupancySensingCluster : public ClusterBase
 {
 public:

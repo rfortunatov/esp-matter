@@ -18,7 +18,7 @@
 #include <esp_matter_cluster.h>
 #include <esp_matter_core.h>
 
-#include <app-common/zap-generated/att-storage.h>
+#include <app/att-storage.h>
 #include <app-common/zap-generated/callback.h>
 #include <app/PluginApplicationCallbacks.h>
 
@@ -1490,6 +1490,124 @@ cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags)
     return cluster;
 }
 } /* temperature_measurement */
+
+namespace carbon_dioxide_measurement {
+const function_generic_t *function_list = NULL;
+const int function_flags = CLUSTER_FLAG_NONE;
+
+cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags)
+{
+    cluster_t *cluster = cluster::create(endpoint, CarbonDioxideConcentrationMeasurement::Id, flags);
+    if (!cluster) {
+        ESP_LOGE(TAG, "Could not create cluster");
+        return NULL;
+    }
+
+    if (flags & CLUSTER_FLAG_SERVER) {
+        set_plugin_server_init_callback(cluster, MatterCarbonDioxideConcentrationMeasurementPluginServerInitCallback);
+        add_function_list(cluster, function_list, function_flags);
+    }
+    if (flags & CLUSTER_FLAG_CLIENT) {
+        set_plugin_client_init_callback(cluster, MatterCarbonDioxideConcentrationMeasurementPluginClientInitCallback);
+        create_default_binding_cluster(endpoint);
+    }
+
+    if (flags & CLUSTER_FLAG_SERVER) {
+        /* Attributes managed internally */
+        global::attribute::create_feature_map(cluster, 0);
+
+        /* Attributes not managed internally */
+        if (config) {
+            global::attribute::create_cluster_revision(cluster, config->cluster_revision);
+            attribute::create_carbon_dioxide_measured_value(cluster, config->measured_value);
+            attribute::create_carbon_dioxide_min_measured_value(cluster, config->min_measured_value);
+            attribute::create_carbon_dioxide_max_measured_value(cluster, config->max_measured_value);
+        } else {
+            ESP_LOGE(TAG, "Config is NULL. Cannot add some attributes.");
+        }
+    }
+
+    return cluster;
+}
+} /* carbon_dioxide_measurement */
+
+namespace total_volatile_organic_compounds_measurement {
+const function_generic_t *function_list = NULL;
+const int function_flags = CLUSTER_FLAG_NONE;
+
+cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags)
+{
+    cluster_t *cluster = cluster::create(endpoint, TotalVolatileOrganicCompoundsConcentrationMeasurement::Id, flags);
+    if (!cluster) {
+        ESP_LOGE(TAG, "Could not create cluster");
+        return NULL;
+    }
+
+    if (flags & CLUSTER_FLAG_SERVER) {
+        set_plugin_server_init_callback(cluster, MatterTotalVolatileOrganicCompoundsConcentrationMeasurementPluginServerInitCallback);
+        add_function_list(cluster, function_list, function_flags);
+    }
+    if (flags & CLUSTER_FLAG_CLIENT) {
+        set_plugin_client_init_callback(cluster, MatterTotalVolatileOrganicCompoundsConcentrationMeasurementPluginClientInitCallback);
+        create_default_binding_cluster(endpoint);
+    }
+
+    if (flags & CLUSTER_FLAG_SERVER) {
+        /* Attributes managed internally */
+        global::attribute::create_feature_map(cluster, 0);
+
+        /* Attributes not managed internally */
+        if (config) {
+            global::attribute::create_cluster_revision(cluster, config->cluster_revision);
+            attribute::create_total_volatile_organic_compounds_measured_value(cluster, config->measured_value);
+            attribute::create_total_volatile_organic_compounds_min_measured_value(cluster, config->min_measured_value);
+            attribute::create_total_volatile_organic_compounds_max_measured_value(cluster, config->max_measured_value);
+        } else {
+            ESP_LOGE(TAG, "Config is NULL. Cannot add some attributes.");
+        }
+    }
+
+    return cluster;
+}
+} /* total_volatile_organic_compounds_measurement */
+
+namespace air_quality_measurement {
+const function_generic_t *function_list = NULL;
+const int function_flags = CLUSTER_FLAG_NONE;
+
+cluster_t *create(endpoint_t *endpoint, config_t *config, uint8_t flags)
+{
+    cluster_t *cluster = cluster::create(endpoint, AirQuality::Id, flags);
+    if (!cluster) {
+        ESP_LOGE(TAG, "Could not create cluster");
+        return NULL;
+    }
+
+    if (flags & CLUSTER_FLAG_SERVER) {
+        set_plugin_server_init_callback(cluster, MatterAirQualityPluginServerInitCallback);
+        add_function_list(cluster, function_list, function_flags);
+    }
+    if (flags & CLUSTER_FLAG_CLIENT) {
+        set_plugin_client_init_callback(cluster, MatterAirQualityPluginClientInitCallback);
+        create_default_binding_cluster(endpoint);
+    }
+
+    if (flags & CLUSTER_FLAG_SERVER) {
+        /* Attributes managed internally */
+        global::attribute::create_feature_map(cluster, 0);
+
+        /* Attributes not managed internally */
+        if (config) {
+            global::attribute::create_cluster_revision(cluster, config->cluster_revision);
+            attribute::create_air_quality(cluster, config->air_quality);
+        } else {
+            ESP_LOGE(TAG, "Config is NULL. Cannot add some attributes.");
+        }
+    }
+
+    return cluster;
+}
+} /* air_quality_measurement */
 
 namespace relative_humidity_measurement {
 const function_generic_t *function_list = NULL;

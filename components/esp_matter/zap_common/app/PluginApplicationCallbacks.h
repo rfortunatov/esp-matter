@@ -113,6 +113,12 @@ void __attribute__((weak)) MatterThermostatPluginClientInitCallback() {}
 void MatterThermostatPluginServerInitCallback();
 void __attribute__((weak)) MatterFanControlPluginClientInitCallback() {}
 void MatterFanControlPluginServerInitCallback();
+void __attribute__((weak)) MatterCarbonDioxideConcentrationMeasurementPluginClientInitCallback() {}
+void MatterCarbonDioxideConcentrationMeasurementPluginServerInitCallback();
+void __attribute__((weak)) MatterTotalVolatileOrganicCompoundsConcentrationMeasurementPluginClientInitCallback() {}
+void MatterTotalVolatileOrganicCompoundsConcentrationMeasurementPluginServerInitCallback();
+void __attribute__((weak)) MatterAirQualityPluginClientInitCallback() {}
+void MatterAirQualityPluginServerInitCallback();
 void __attribute__((weak)) MatterThermostatUserInterfaceConfigurationPluginClientInitCallback() {}
 void MatterThermostatUserInterfaceConfigurationPluginServerInitCallback();
 void __attribute__((weak)) MatterColorControlPluginClientInitCallback() {}

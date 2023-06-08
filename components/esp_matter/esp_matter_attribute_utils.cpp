@@ -98,7 +98,7 @@ esp_matter_attr_val_t esp_matter_nullable_float(nullable<float> val)
     if (val.is_null()) {
         chip::app::NumericAttributeTraits<float>::SetNull(attr_val.val.f);
     } else {
-        attr_val.val.i = val.value();
+        attr_val.val.f = val.value();
     }
     return attr_val;
 }
@@ -1576,6 +1576,22 @@ static esp_err_t get_attr_val_from_data(esp_matter_attr_val_t *val, EmberAfAttri
             }
         } else {
             *val = esp_matter_bitmap16(attribute_value);
+        }
+        break;
+    }
+
+    case ZCL_SINGLE_ATTRIBUTE_TYPE: {
+        using Traits = chip::app::NumericAttributeTraits<float>;
+        Traits::StorageType attribute_value;
+        memcpy((uint8_t *)&attribute_value, value, sizeof(Traits::StorageType));
+        if (attribute_metadata->IsNullable()) {
+            if (Traits::IsNullValue(attribute_value)) {
+                *val = esp_matter_nullable_float(nullable<float>());
+            } else {
+                *val = esp_matter_nullable_float(attribute_value);
+            }
+        } else {
+            *val = esp_matter_nullable_float(attribute_value);
         }
         break;
     }
